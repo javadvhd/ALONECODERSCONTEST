@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Major(models.Model):
-    majors = (('CS', 'Computer Science'), )
+    majors = (('CS', 'Computer Science'),)
     Major = models.CharField(max_length=2, choices=majors, default='')
 
     def add_major(self, item_short, item_name):
@@ -20,8 +20,6 @@ class User(models.Model):
 
     def __str__(self):
         return repr(self.Student_id)
-
-
 
 
 class Text(models.Model):
