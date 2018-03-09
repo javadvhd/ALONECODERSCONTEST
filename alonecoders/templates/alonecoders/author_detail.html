@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User details </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div  class="col-md-7">
+                <div class="col-md-4">
+                    <p> <span style="width: 20px" class="glyphicon glyphicon-user"></span></p>
+                </div>
+                <div class="col-md-8">
+                    <div>
+                        {{ user.Username }}
+                    </div>
+                    <div>
+                        {{ user.Email }}
+                    </div>
+                </div>
+                <div class="col-md-8"> </div>
+            </div>
+            <div class="col-md-3"></div>
+
+
+        </div>
+        {% for post in user.POSTS  %}
+            <div class="row">
+            <div class="col-md-2"></div>
+            <div style="border: 2px solid lightgray" class="col-md-7">
+                <div class="col-md-4">
+                    <p> <span class="glyphicon glyphicon-user"></span></p>
+                </div>
+                <div class="col-md-8">
+                    <row>
+                        <div clss="col-md-2"> </div>
+                        <div class="col-md-4"> {{ author.Email }} </div>
+                        <div class="col-md-4"></div>
+                    </row>
+                    <row>
+                        {{ post }}
+                    </row>
+                    <row>
+                        <p>{{ post.comments.len }} </p>
+                        <p> {{ post.likes }}</p>
+                        <p>{{ post.dislikes }} </p>
+                    </row>
+                </div>
+                <div class="col-md-8"> </div>
+            </div>
+            <div class="col-md-3"></div>
+
+
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+
+</body>
+</html>

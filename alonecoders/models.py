@@ -13,6 +13,7 @@ class User(models.Model):
         (COMPUTER_ENGINEERING, 'computer engineering'),
         (COMPUTER_SCIENCE, 'computer science'),
     )
+    print(MAJOR_CHOICES)
     major = models.CharField(
         max_length=2,
         choices=MAJOR_CHOICES,
@@ -26,4 +27,5 @@ class User(models.Model):
 class Text(models.Model):
     content = models.CharField(max_length=1000)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    likes = models.IntegerField()
+    dislikes = models.IntegerField()

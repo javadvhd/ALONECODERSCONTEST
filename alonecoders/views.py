@@ -9,7 +9,7 @@ def get_text_detail(request, text_id):
 
 def get_profile(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    return render(request, 'alonecoders/*.html', {'user': user})
+    return render(request, 'alonecoders/author_detail.html', {'user': user})
 
 
 def login(request):
