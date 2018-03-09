@@ -1,23 +1,35 @@
 from django.db import models
 
 
+class Major(models.Model):
+    short_m = models.CharField(max_length=2, default='CS')
+    name_m = models.CharField(max_length=20, default='Computer Science')
+
+    def str(self):
+        return repr(self.short_m)
+
+
+def add_item(base):
+    return tuple(list((o.short_m, o.name_m) for o in Major.objects.all() if o not in base) + list(base))
+
+
 class User(models.Model):
     Username = models.CharField(max_length=50)
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=20)
     Student_id = models.IntegerField()
     Name = models.CharField(max_length=50)
-    COMPUTER_ENGINEERING = 'CE'
-    COMPUTER_SCIENCE = 'CS'
+    CS = 'CS'
+    CE = 'CE'
     MAJOR_CHOICES = (
-        (COMPUTER_ENGINEERING, 'computer engineering'),
-        (COMPUTER_SCIENCE, 'computer science'),
+        (CS, 'Computer scinece'),
+        (CE, 'Computer Engenier'),
     )
-    print(MAJOR_CHOICES)
-    major = models.CharField(
+    MAJOR_CHOICES = add_item(MAJOR_CHOICES)
+    major_in_user = models.CharField(
         max_length=2,
         choices=MAJOR_CHOICES,
-        default=COMPUTER_SCIENCE,
+        default=CS
     )
 
     def str(self):

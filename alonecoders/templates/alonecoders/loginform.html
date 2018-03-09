@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'alonecoders/js/login_js.js' %}">
+
+</head>
+<body>
+
+
+
+<form onsubmit="return validateForm() " name="loginform" class="" action="index.html" method="post">
+
+  <div style="margin-left: 40%;margin-right: 50%" class="">
+    <p><input type="text" name="username" value="", placeholder="نام کاربری"> </p>
+    <p><input type="email" name="email" value="", placeholder="ایمیل">  </p>
+    <p><input type="password" name="pass" value="", placeholder="گذرواژه"> </p>
+    <p><input type="password" name="pass2" value="", placeholder="تکرار گذرواژه"> </p>
+    <p><input type="text"  name="stdid" value="", placeholder="شماره دانشجویی"> </p>
+
+
+    <select name="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <br><br>
+    <input type="submit">
+  </div>
+</form>
+
+
+
+</body>
+</html>
