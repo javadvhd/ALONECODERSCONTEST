@@ -2,12 +2,21 @@ from django.db import models
 
 
 class Major(models.Model):
-    majors = (('CS', 'Computer Science'),)
-    Major = models.CharField(max_length=2, choices=majors, default='')
+    def __init__(self):
+        short_m = models.CharField(max_length=2)
+        name_m = models.CharField(max_length=20)
 
-    def add_major(self, item_short, item_name):
-        new_item = ((item_short, item_name),)
-        self.Majors = self.Majors + new_item
+    short_m = models.CharField(max_length=2)
+    name_m = models.CharField(max_length=20)
+
+
+def make_choice():
+    choice = [('CS', 'computer science')]
+    objs = Major.objects.all()
+    if objs:
+        for obj in objs:
+            choice = choice + [(obj.short_m, obj.name_m)]
+    return choice
 
 
 class User(models.Model):
@@ -16,12 +25,14 @@ class User(models.Model):
     Password = models.CharField(max_length=20)
     Student_id = models.IntegerField()
     Name = models.CharField(max_length=50)
-    Major = models.ForeignKey(Major, on_delete=models)
+    last_choices = make_choice()
+    major = models.CharField(max_length=2, choices=last_choices)
 
-    def __str__(self):
+    def str(self):
         return repr(self.Student_id)
 
 
 class Text(models.Model):
     content = models.CharField(max_length=1000)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+

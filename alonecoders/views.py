@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Text, User
 
@@ -15,6 +14,7 @@ def get_profile(request, user_id):
 
 def login(request):
     return render(request, 'login.html')
+
 
 def save_user(request):
     if request.method == 'POST':
