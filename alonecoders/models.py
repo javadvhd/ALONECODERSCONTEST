@@ -2,13 +2,13 @@ from django.db import models
 
 
 class User(models.Model):
-    Username = models.CharField()
-    Email = models.EmailField()
-    Password = models.CharField()
-    Confirm_password = models.CharField()
+    Username = models.CharField(max_length=50)
+    Email = models.EmailField(max_length=50)
+    Password = models.CharField(max_length=20)
+    Confirm_password = models.CharField(max_length=20)
     Student_id = models.IntegerField()
-    Name = models.CharField()
-    Major = models.CharField(choices=majors)
+    Name = models.CharField(max_length=10)
+    # Major = models.CharField(choices=majors)
 
     def add_major(self, item_short, item_name):
         new_item = ((item_short, item_name),)
@@ -16,6 +16,7 @@ class User(models.Model):
 
     def __str__(self):
         return repr(self.Studen_id)
+
 
 class Text(models.Model):
     content = models.CharField(max_length=1000)
